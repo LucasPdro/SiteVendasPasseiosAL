@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contato - AL Passeios</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/contato.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1 class="logo">AL Passeios</h1>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="menu">
+          <ul>
+            <li><a href="/index.html">Início</a></li>
+            <li><a href="/passeios.html">Passeios</a></li>
+            <li><a href="/index.html#avaliacoes">Avaliações</a></li>
+            <li>
+              <a href="/contato.html" class="active">Contato</a>
+            </li>
+            <li><a href="/quemsomos.html">Quem somos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="contato-section">
+      <div class="container">
+        <h2>Entre em Contato</h2>
+        <p>
+          <i class="fas fa-phone-alt"></i> WhatsApp:
+          <a href="https://wa.me/SEUNUMERO" target="_blank">(xx) xxxxx-xxxx</a>
+        </p>
+        <p><i class="fas fa-envelope"></i> E-mail: contato@alpasseios.com</p>
+        <p>
+          <i class="fas fa-map-marker-alt"></i> Endereço: Rua Exemplo, 123 -
+          Barreiros, PE
+        </p>
+
+        <div class="redes-sociais">
+          <p>Siga-nos:</p>
+          <a href="https://www.instagram.com/SEU_INSTAGRAM" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://www.facebook.com/SEU_FACEBOOK" target="_blank"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2025 AL Passeios Online. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleBtn = document.getElementById("menu-toggle");
+        const menu = document.querySelector(".menu ul");
+        toggleBtn.addEventListener("click", () => {
+          menu.classList.toggle("show");
+        });
+      });
+    </script>
+  </body>
+</html>

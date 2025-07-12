@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AL Passeios Online</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1 class="logo">AL Passeios</h1>
+
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="menu">
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="/passeios.html">Passeios</a></li>
+            <li><a href="#avaliacoes">Avaliações</a></li>
+            <li><a href="/contato.html">Contato</a></li>
+            <li><a href="/quemsomos.html">Quem somos</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="inicio" class="hero">
+      <div class="overlay"></div>
+      <div class="hero-text">
+        <h2>EXPLORE OS MELHORES PASSEIOS</h2>
+        <p>Descubra e reserve passeios incríveis com facilidade.</p>
+        <a href="/passeios.html" class="btn">Ver Passeios</a>
+      </div>
+    </section>
+
+    <section id="passeios" class="passeios">
+      <h2>Passeios em Destaque</h2>
+      <div class="passeio-lista">
+        <div class="passeio-item">
+          <img src="/assets/img/pexels-fabianwiktor-994605.jpg" alt="Praia" />
+          <h3>Passeio na Praia</h3>
+          <p>R$ 120,00</p>
+          <a href="https://wa.me/SEUNUMERO" class="btn"
+            >Reservar pelo WhatsApp</a
+          >
+        </div>
+        <div class="passeio-item">
+          <img
+            src="/assets/img/pexels-travel-with-mac-2001775511-29216983.jpg"
+            alt="Barco"
+          />
+          <h3>Passeio de Barco</h3>
+          <p>R$ 180,00</p>
+          <a href="https://wa.me/SEUNUMERO" class="btn"
+            >Reservar pelo WhatsApp</a
+          >
+        </div>
+        <div class="passeio-item">
+          <img src="/assets/img/pexels-fabianwiktor-994605.jpg" alt="Trilha" />
+          <h3>Trilha na Natureza</h3>
+          <p>R$ 90,00</p>
+          <a href="https://wa.me/SEUNUMERO" class="btn"
+            >Reservar pelo WhatsApp</a
+          >
+        </div>
+      </div>
+    </section>
+    <!-- SLIDE DE FOTOS DOS PASSEIOS -->
+    <section class="slider">
+      <div class="slider-container">
+        <div class="slide fade">
+          <img
+            src="/assets/img/pexels-jean-frenna-84337-1045113.jpg"
+            alt="Praia"
+          />
+        </div>
+        <div class="slide fade">
+          <img
+            src="/assets/img/pexels-jean-frenna-84337-1045113.jpg"
+            alt="Barco"
+          />
+        </div>
+        <div class="slide fade">
+          <img
+            src="/assets/img/pexels-quang-nguyen-vinh-222549-2155728.jpg"
+            alt="Trilha"
+          />
+        </div>
+      </div>
+      <div class="dots">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </section>
+
+    <section id="avaliacoes" class="avaliacoes">
+      <h2>Avaliações de Clientes</h2>
+
+      <h3>Deixe seu Feedback</h3>
+      <form id="feedback-form">
+        <label for="nome">Nome:</label><br />
+        <input type="text" id="nome" name="nome" required /><br />
+
+        <label for="comentario">Comentário:</label><br />
+        <textarea id="comentario" name="comentario" rows="4" required></textarea
+        ><br />
+
+        <label for="nota">Nota:</label><br />
+        <select id="nota" name="nota" required>
+          <option value="">Escolha</option>
+          <option value="5 Excelente">5 - Excelente</option>
+          <option value="4 Muito bom">4 - Muito bom</option>
+          <option value="3 Bom">3 - Bom</option>
+          <option value="2 Regular">2 - Regular</option>
+          <option value="1 Ruim">1 - Ruim</option></select
+        ><br /><br />
+
+        <button type="submit" class="btn">Enviar Feedback</button>
+      </form>
+      <p id="form-msg"></p>
+    </section>
+    <div id="feedback-list" class="feedback-list">
+      <!-- Feedbacks carregados do Supabase aparecerão aqui -->
+    </div>
+
+    <section id="contato" class="contato">
+      <h2>Fale Conosco</h2>
+      <p>Entre em contato direto pelo WhatsApp:</p>
+      <a href="https://wa.me/SEUNUMERO" class="btn">Abrir WhatsApp</a>
+    </section>
+
+    <footer class="site-footer">
+      <p>&copy; 2025 AL Passeios Online. Todos os direitos reservados.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/SEU_INSTAGRAM" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="https://www.facebook.com/SEU_FACEBOOK" target="_blank"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+      </div>
+    </footer>
+
+    <!-- Loader -->
+    <div id="loading-overlay">
+      <div class="spinner"></div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleBtn = document.getElementById("menu-toggle");
+        const menu = document.querySelector(".menu ul");
+        const loadingOverlay = document.getElementById("loading-overlay");
+
+        toggleBtn.addEventListener("click", () => {
+          menu.classList.toggle("show");
+        });
+
+        // Exibe o loading ao clicar em links de outras páginas
+        document.querySelectorAll(".menu a").forEach((link) => {
+          link.addEventListener("click", (e) => {
+            const href = link.getAttribute("href");
+            if (href && !href.startsWith("#")) {
+              e.preventDefault();
+              loadingOverlay.style.display = "flex";
+              setTimeout(() => {
+                window.location.href = href;
+              }, 500);
+            }
+          });
+        });
+      });
+    </script>
+
+    <!-- SDK do Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/assets/javascript/script.js"></script>
+    <script src="/assets/javascript/slide.js"></script>
+  </body>
+</html>
