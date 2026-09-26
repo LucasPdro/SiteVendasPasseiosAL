@@ -4,18 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Passeios - AL Passeios Online</title>
+    <!-- Glightbox CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
+
+    <!-- Estilo principal -->
     <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <!-- Ícones -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Estilo de Animação -->
+    <style>
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+      }
+
+      .fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
   </head>
+
   <body>
     <header class="site-header">
       <div class="container">
-        <h1 class="logo">AL Passeios</h1>
+        <a
+          href="/index.html"
+          style="
+            cursor: pointer;
+            text-decoration: none;
+            color: #fefe;
+            font-weight: bold;
+          "
+          ><h1 class="logo">AL Passeios</h1></a
+        >
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
         <nav class="menu">
           <ul>
             <li><a href="/index.html">Início</a></li>
-            <li>
-              <a href="/passeios.html" class="active">Passeios</a>
-            </li>
+            <li><a href="/passeios.html" class="active">Passeios</a></li>
             <li><a href="/index.html#avaliacoes">Avaliações</a></li>
             <li><a href="/contato.html">Contato</a></li>
             <li><a href="/quem-somos.html">Quem Somos</a></li>
@@ -26,103 +72,551 @@
 
     <main class="container">
       <section class="passeios">
-        <h2>Todos os Passeios</h2>
-        <p class="passeios-intro">
+        <h2 class="fade-in">Todos os Passeios</h2>
+        <p class="passeios-intro fade-in">
           Escolha o passeio ideal para você e sua família e reserve com
           facilidade pelo WhatsApp!
         </p>
 
-        <div class="passeio-lista">
-          <!-- Passeio 1 -->
-          <div class="passeio-item">
-            <img
-              src="https://source.unsplash.com/400x250/?beach,alagoas"
-              alt="Praia paradisíaca"
+        <!-- VÍDEO -->
+        <div class="video-container fade-in">
+          <video controls>
+            <source
+              src="/assets/img/video_2025-07-15_23-12-17.mp4"
+              type="video/mp4"
             />
-            <h3>Praia do Francês</h3>
-            <p>
-              Um dos destinos mais procurados de Alagoas. Mar cristalino,
-              quiosques e segurança.
-            </p>
-            <span class="preco">R$ 120,00</span>
-            <a href="https://wa.me/SEUNUMERO" class="btn"
-              >Reservar pelo WhatsApp</a
+          </video>
+        </div>
+        <div class="ver-mais-container fade-in">
+          <p>
+            🌊 Não perca as <strong>fotos subaquáticas</strong> no final da
+            página!
+          </p>
+          <button onclick="scrollToMergulho()">Ver Fotos Aquáticas</button>
+        </div>
+
+        <!-- GALERIA LANCHA -->
+        <div class="galeria-container fade-in">
+          <h3>Passeio de Lancha</h3>
+
+          <div
+            class="slideshow"
+            id="slideshow-lancha"
+            aria-label="Galeria de imagens passeio de lancha"
+            role="region"
+          >
+            <img
+              src="/assets/img/adrenalina_no_mar_lancha.png"
+              alt="Passeio de lancha 1"
+              class="active"
+            />
+            <img
+              src="/assets/img/imagem-lancha.png"
+              alt="Passeio de lancha 2"
+            />
+            <img
+              src="/assets/img/fotos_mar_lancha.png"
+              alt="Passeio de lancha 3"
+            />
+            <button
+              class="galeria-btn prev"
+              aria-label="Imagem anterior lancha"
+              onclick="changeSlide('lancha', -1)"
             >
+              ❮
+            </button>
+            <button
+              class="galeria-btn next"
+              aria-label="Próxima imagem lancha"
+              onclick="changeSlide('lancha', 1)"
+            >
+              ❯
+            </button>
           </div>
 
-          <!-- Passeio 2 -->
-          <div class="passeio-item">
-            <img
-              src="https://source.unsplash.com/400x250/?boat,sea"
-              alt="Passeio de barco"
-            />
-            <h3>Maragogi – Piscinas Naturais</h3>
-            <p>
-              O Caribe brasileiro te espera! Passeio de catamarã até as piscinas
-              naturais.
+          <div class="descricao-wrapper">
+            <p class="descricao">
+              <strong>Duração:</strong> 2h30<br />
+              <strong>Incluso:</strong><br />
+              - Banco de areia na Praia da Bruna<br />
+              - Parada no bar flutuante (comidas e bebidas à parte)<br />
+              <strong>Opcionais:</strong><br />
+              - Máscara de snorkel<br />
+              - Fotos subaquáticas<br />
+              - Mergulho com cilindro<br />
+              - Tour pela orla (praias de Maragogi)<br />
+              <strong>Valores:</strong><br />
+              - R$130,00 — Piscinas naturais + banco de areia<br />
+              - Privativos: valores sob consulta<br />
+              <strong>Ponto de embarque:</strong> A combinar
             </p>
-            <span class="preco">R$ 180,00</span>
-            <a href="https://wa.me/SEUNUMERO" class="btn"
-              >Reservar pelo WhatsApp</a
+            <a
+              href="https://wa.me/+5581989701351"
+              class="botao-saiba-mais"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Saiba mais</a
             >
           </div>
+        </div>
+        <div class="galeria-lancha">
+          <h3>Passeio de Lancha - Galeria Especial</h3>
 
-          <!-- Passeio 3 -->
-          <div class="passeio-item">
+          <div class="carousel-wrapper">
+            <div class="carousel-track" id="carouselTrackLancha">
+              <img
+                src="/assets/img/lanchasNasPiscinasNaturais(10).jpg"
+                alt="Lancha 1"
+              />
+              <img
+                src="/assets/img/lanchasNasPiscinasNaturais(11).jpg"
+                alt="Lancha 2"
+              />
+              <img
+                src="/assets/img/lanchasNasPiscinasNaturais(12).jpg"
+                alt="Lancha 3"
+              />
+              <img
+                src="/assets/img/lanchasNasPiscinasNaturais(13).jpg"
+                alt="Lancha 4"
+              />
+            </div>
+            <div class="carousel-buttons">
+              <button onclick="moveCarouselLancha(-1)">❮</button>
+              <button onclick="moveCarouselLancha(1)">❯</button>
+            </div>
+          </div>
+          <p class="descricao">
+            <span class="emoji">🌊</span>
+            <strong>Passeio exclusivo de lancha</strong> com paisagens
+            incríveis.<br />
+            Explore os <strong>melhores momentos</strong> nas águas do Caribe
+            brasileiro!
+          </p>
+        </div>
+
+        <!-- GALERIA BUGGY -->
+        <div class="galeria-container fade-in">
+          <h3>Passeio de Buggy</h3>
+
+          <div
+            class="slideshow"
+            id="slideshow-buggy"
+            aria-label="Galeria de imagens passeio de buggy"
+            role="region"
+          >
             <img
-              src="https://source.unsplash.com/400x250/?nature,trail"
-              alt="Trilha ecológica"
+              src="/assets/img/BuggyBeijando.png"
+              alt="Passeio de buggy 1"
+              class="active"
             />
-            <h3>Trilha Ecológica</h3>
-            <p>
-              Aventura e conexão com a natureza em trilhas seguras com guia
-              local.
-            </p>
-            <span class="preco">R$ 90,00</span>
-            <a href="https://wa.me/SEUNUMERO" class="btn"
-              >Reservar pelo WhatsApp</a
+            <img
+              src="/assets/img/passeiobuggy_mulher.png"
+              alt="Passeio de buggy 2"
+            />
+            <img
+              src="/assets/img/pexels-joel-de-la-cruz-3529563-31234076.jpg"
+              alt="Passeio de buggy 3"
+            />
+            <button
+              class="galeria-btn prev"
+              aria-label="Imagem anterior buggy"
+              onclick="changeSlide('buggy', -1)"
             >
+              ❮
+            </button>
+            <button
+              class="galeria-btn next"
+              aria-label="Próxima imagem buggy"
+              onclick="changeSlide('buggy', 1)"
+            >
+              ❯
+            </button>
           </div>
 
-          <!-- Passeio 4 -->
-          <div class="passeio-item">
-            <img
-              src="https://source.unsplash.com/400x250/?lake,sunset"
-              alt="Lagoa Mundaú"
-            />
-            <h3>Pôr do Sol na Lagoa Mundaú</h3>
-            <p>
-              Um passeio de barco inesquecível pelas 9 ilhas, com parada para
-              banho e fotos.
+          <div class="descricao-wrapper">
+            <p class="descricao">
+              <strong>Duração:</strong> de 2h até 6h30 (dependendo do
+              roteiro)<br />
+              <strong>Incluso:</strong><br />
+              - Visita a praias, mirantes, bicas naturais<br />
+              - Paradas para banho e fotos<br />
+              - Travessias de balsa (quando aplicável)<br />
+              <strong>Opcionais:</strong><br />
+              - Roteiro personalizado<br />
+              - Refeições<br />
+              - Guia local<br />
+              <strong>Valores:</strong><br />
+              - Japaratinga: R$350,00 – ⏱ 3h<br />
+              - Maragogi: R$300,00 – ⏱ 2h30<br />
+              - São Miguel dos Milagres: R$750,00 – ⏱ 6h30<br /><br />
+              <strong class="titulo-roteiros">Roteiros:</strong><br /><br />
+              <strong>Japaratinga</strong><br />
+              🌴 Mirante Aruanã<br />
+              🏖 Praia do Salgado<br />
+              🏖 Praia do Centro<br />
+              🏖 Praia de Bitingui<br />
+              🏜 Banho de Bica<br />
+              🏖 Barreiras do Boqueirão<br /><br />
+              <strong>Maragogi</strong><br />
+              🏖 Praia de Burgalhau<br />
+              🏖 Praia de Barra Grande<br />
+              🏖 Praia de Antunes<br />
+              🏖 Praia de Xaréu<br /><br />
+              <strong>São Miguel dos Milagres</strong><br />
+              🛳 Travessia de balsa<br />
+              🏯 Porto de Pedras<br />
+              🛤 Túnel Verde<br />
+              🏖 Praia do Patacho<br />
+              🏖 Praia de Lages<br />
+              🌴 Mirante dos Milagres<br />
+              🏖 Praia de São Miguel dos Milagres<br /><br />
+              <strong>Ponto de partida:</strong> A combinar
             </p>
-            <span class="preco">R$ 150,00</span>
-            <a href="https://wa.me/SEUNUMERO" class="btn"
-              >Reservar pelo WhatsApp</a
+            <a
+              href="https://wa.me/+5581989701351"
+              class="botao-saiba-mais"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Saiba mais</a
             >
           </div>
+        </div>
+        <div class="galeria-buggy">
+          <h3>Passeio de Buggy - Galeria Especial</h3>
 
-          <!-- Passeio 5 -->
-          <div class="passeio-item">
-            <img
-              src="https://source.unsplash.com/400x250/?buggy,dunes"
-              alt="Passeio de buggy"
-            />
-            <h3>Passeio de Buggy nas Dunas</h3>
-            <p>
-              Adrenalina e paisagens incríveis num passeio pelas dunas com
-              emoção ou sem emoção.
-            </p>
-            <span class="preco">R$ 250,00</span>
-            <a href="https://wa.me/SEUNUMERO" class="btn"
-              >Reservar pelo WhatsApp</a
+          <div class="carousel-wrapper">
+            <div class="carousel-track" id="carouselTrack">
+              <img src="/assets/img/buggy(1).jpg" alt="Buggy 1" />
+              <img src="/assets/img/buggy(2).jpg" alt="Buggy 2" />
+              <img src="/assets/img/buggy(3).jpg" alt="Buggy 3" />
+              <img src="/assets/img/buggy(4).jpg" alt="Buggy 4" />
+              <img src="/assets/img/buggy(5).jpg" alt="Buggy 5" />
+            </div>
+            <div class="carousel-buttons">
+              <button onclick="moveCarousel(-1)">❮</button>
+              <button onclick="moveCarousel(1)">❯</button>
+            </div>
+          </div>
+          <p class="descricao">
+            <span class="emoji">📸</span>
+            <strong>Registros incríveis</strong> em paisagens deslumbrantes.<br />
+            <span class="emoji"></span> Esta galeria mostra os
+            <strong>melhores ângulos</strong> dos passeios verticais de Buggy!
+          </p>
+        </div>
+
+        <div id="mergulho-fotos" class="galeria-container fade-in">
+          <h3>Fotos Subaquáticas</h3>
+          <div class="galeria-mergulho">
+            <a
+              href="/assets/img/mergulho/GPTempDownload (1).jpg"
+              class="glightbox"
+              data-gallery="mergulho"
             >
+              <img
+                src="/assets/img/mergulho/GPTempDownload (1).jpg"
+                alt="Foto subaquática 1"
+              />
+            </a>
+            <a
+              href="/assets/img/mergulho/GPTempDownload (2).jpg"
+              class="glightbox"
+              data-gallery="mergulho"
+            >
+              <img
+                src="/assets/img/mergulho/GPTempDownload (2).jpg"
+                alt="Foto subaquática 2"
+              />
+            </a>
+            <a
+              href="/assets/img/mergulho/GPTempDownload (3).jpg"
+              class="glightbox"
+              data-gallery="mergulho"
+            >
+              <img
+                src="/assets/img/mergulho/GPTempDownload (3).jpg"
+                alt="Foto subaquática 3"
+              />
+            </a>
+
+            <a
+              href="/assets/img/mergulho/GPTempDownload (4).jpg"
+              class="glightbox"
+              data-gallery="mergulho"
+            >
+              <img
+                src="/assets/img/mergulho/GPTempDownload (4).jpg"
+                alt="Foto subaquática 3"
+              />
+            </a>
+
+            <a
+              href="/assets/img/mergulho/GPTempDownload (5).jpg"
+              class="glightbox"
+              data-gallery="mergulho"
+            >
+              <img
+                src="/assets/img/mergulho/GPTempDownload (5).jpg"
+                alt="Foto subaquática 3"
+              />
+            </a>
+
+            <a
+              href="/assets/img/mergulho/GPTempDownload (6).jpg"
+              class="glightbox"
+              data-gallery="mergulho"
+            >
+              <img
+                src="/assets/img/mergulho/GPTempDownload (6).jpg"
+                alt="Foto subaquática 3"
+              />
+            </a>
+            <a
+              href="/assets/img/mergulho/GPTempDownload (7).jpg"
+              class="glightbox"
+              data-gallery="mergulho"
+            >
+              <img
+                src="/assets/img/mergulho/GPTempDownload (7).jpg"
+                alt="Foto subaquática 3"
+              />
+            </a>
+            <a
+              href="/assets/img/mergulho/GPTempDownload (8).jpg"
+              class="glightbox"
+              data-gallery="mergulho"
+            >
+              <img
+                src="/assets/img/mergulho/GPTempDownload (8).jpg"
+                alt="Foto subaquática 3"
+              />
+            </a>
+            <a
+              href="/assets/img/mergulho/GPTempDownload (9).jpg"
+              class="glightbox"
+              data-gallery="mergulho"
+            >
+              <img
+                src="/assets/img/mergulho/GPTempDownload (9).jpg"
+                alt="Foto subaquática 3"
+              />
+            </a>
+
+            <a
+              href="/assets/img/mergulho/GPTempDownload (10).jpg"
+              class="glightbox"
+              data-gallery="mergulho"
+            >
+              <img
+                src="/assets/img/mergulho/GPTempDownload (10).jpg"
+                alt="Foto subaquática 3"
+              />
+            </a>
+
+            <a
+              href="/assets/img/mergulho/GPTempDownload (11).jpg"
+              class="glightbox"
+              data-gallery="mergulho"
+            >
+              <img
+                src="/assets/img/mergulho/GPTempDownload (11).jpg"
+                alt="Foto subaquática 3"
+              />
+            </a>
+            <a
+              href="/assets/img/mergulho/GPTempDownload (12).jpg"
+              class="glightbox"
+              data-gallery="mergulho"
+            >
+              <img
+                src="/assets/img/mergulho/GPTempDownload (12).jpg"
+                alt="Foto subaquática 3"
+              />
+            </a>
           </div>
         </div>
       </section>
     </main>
 
+    <!-- Botão voltar ao topo -->
+    <button id="btn-topo" title="Voltar ao topo">
+      <i class="fas fa-arrow-up"></i>
+    </button>
     <footer class="site-footer">
+      <span class="aviso-responsabilidade">
+        ⚠️ Não nos responsabilizamos por objetos perdidos ou esquecidos durante
+        os passeios.
+      </span>
       <p>&copy; 2025 AL Passeios Online. Todos os direitos reservados.</p>
+      <div class="social-links">
+        <a
+          href="https://www.instagram.com/lupeciopasseio_maragogi_/?igsh=aDRmMG1mZnRmaDlx#"
+          target="_blank"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
     </footer>
+
+    <!-- Whats flutuante -->
+    <a
+      href="https://wa.me/5581989701351"
+      target="_blank"
+      class="whatsapp-float"
+      aria-label="Contato WhatsApp"
+    >
+      <svg
+        width="35"
+        height="35"
+        viewBox="0 0 24 24"
+        fill="#fff"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20.52 3.48a11.914 11.914 0 0 0-16.85 0 11.916 11.916 0 0 0-3.5 8.47 11.953 11.953 0 0 0 2.05 6.5L2 22l4.57-1.21a11.888 11.888 0 0 0 6.5 2.05c4.16 0 8.08-1.6 11-4.53a11.914 11.914 0 0 0 0-16.83zm-8.5 17.15a9.06 9.06 0 0 1-4.65-1.27l-.33-.2-2.7.71.72-2.63-.22-.34a9.046 9.046 0 0 1-1.41-5.22 9.085 9.085 0 0 1 9.02-9.03 9.045 9.045 0 0 1 6.4 2.67 8.993 8.993 0 0 1 2.65 6.38 9.085 9.085 0 0 1-9.05 9.04zm5.02-6.37c-.28-.14-1.65-.81-1.9-.9-.25-.1-.43-.14-.62.14-.19.28-.74.9-.91 1.08-.17.18-.33.2-.61.07-.28-.14-1.17-.43-2.22-1.38-.82-.73-1.37-1.63-1.53-1.9-.16-.28-.02-.43.12-.57.12-.12.28-.33.42-.5.14-.17.19-.28.28-.47.09-.18.04-.34-.02-.48-.06-.14-.62-1.5-.85-2.05-.22-.54-.45-.47-.62-.48-.16 0-.35-.01-.54-.01-.19 0-.5.07-.76.34-.26.26-1 1-1 2.42 0 1.42 1.03 2.79 1.17 2.98.14.19 2.02 3.08 4.89 4.32.68.29 1.21.46 1.62.59.68.21 1.3.18 1.79.11.55-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.13-.26-.2-.54-.34z"
+        />
+      </svg>
+    </a>
+    <!-- JavaScript -->
+    <script>
+      const slideIndices = {
+        lancha: 0,
+        buggy: 0,
+      };
+
+      function changeSlide(tipo, direcao) {
+        const slideshow = document.getElementById(`slideshow-${tipo}`);
+        if (!slideshow) return;
+
+        const slides = slideshow.querySelectorAll("img");
+        slideIndices[tipo] += direcao;
+
+        if (slideIndices[tipo] < 0) {
+          slideIndices[tipo] = slides.length - 1;
+        } else if (slideIndices[tipo] >= slides.length) {
+          slideIndices[tipo] = 0;
+        }
+
+        slides.forEach((img, idx) => {
+          img.classList.toggle("active", idx === slideIndices[tipo]);
+        });
+      }
+
+      //Scrool para direcionar o cliente as fotos de mergulho
+      function scrollToMergulho() {
+        const alvo = document.getElementById("mergulho-fotos");
+        if (alvo) {
+          alvo.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+      //--------------------->>>>
+
+      document.addEventListener("DOMContentLoaded", () => {
+        ["lancha", "buggy"].forEach((tipo) => {
+          const slideshow = document.getElementById(`slideshow-${tipo}`);
+          const slides = slideshow.querySelectorAll("img");
+          slides.forEach((img, idx) => {
+            img.classList.toggle("active", idx === 0);
+          });
+        });
+
+        const toggleBtn = document.getElementById("menu-toggle");
+        const menu = document.querySelector(".menu ul");
+        if (toggleBtn && menu) {
+          toggleBtn.addEventListener("click", () => {
+            menu.classList.toggle("show");
+          });
+        }
+      });
+
+      // Ativar animações ao rolar
+      function revealOnScroll() {
+        const elements = document.querySelectorAll(".fade-in");
+        const windowHeight = window.innerHeight;
+
+        elements.forEach((el) => {
+          const top = el.getBoundingClientRect().top;
+          if (top < windowHeight - 100) {
+            el.classList.add("show");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", revealOnScroll);
+      window.addEventListener("DOMContentLoaded", revealOnScroll);
+
+      //------------------------------CARROUSEL LANCHA GALERIA----------------------//
+
+      let currentSlideLancha = 0;
+      const trackLancha = document.getElementById("carouselTrackLancha");
+      const slidesLancha = trackLancha.querySelectorAll("img");
+
+      function updateCarouselLancha() {
+        const slideWidth = slidesLancha[0].clientWidth;
+        trackLancha.style.transform = `translateX(-${
+          currentSlideLancha * slideWidth
+        }px)`;
+
+        slidesLancha.forEach((img, index) => {
+          img.classList.remove("active");
+          if (index === currentSlideLancha) {
+            img.classList.add("active");
+          }
+        });
+      }
+
+      function moveCarouselLancha(direction) {
+        currentSlideLancha += direction;
+        if (currentSlideLancha < 0)
+          currentSlideLancha = slidesLancha.length - 1;
+        if (currentSlideLancha >= slidesLancha.length) currentSlideLancha = 0;
+        updateCarouselLancha();
+      }
+
+      window.addEventListener("load", () => {
+        updateCarouselLancha();
+        slidesLancha[0].classList.add("active");
+      });
+
+      //------------------------------CARROUSEL BUGGY GALERIA EMBAIXO-----------------------//
+      let currentSlide = 0;
+      const track = document.getElementById("carouselTrack");
+      const slides = track.querySelectorAll("img");
+
+      function updateCarousel() {
+        const slideWidth = slides[0].clientWidth;
+        track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+
+        slides.forEach((img, index) => {
+          img.classList.remove("active");
+          if (index === currentSlide) {
+            img.classList.add("active");
+          }
+        });
+      }
+
+      function moveCarousel(direction) {
+        currentSlide += direction;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+        if (currentSlide >= slides.length) currentSlide = 0;
+        updateCarousel();
+      }
+
+      // Inicializa
+      window.addEventListener("load", () => {
+        updateCarousel();
+        slides[0].classList.add("active");
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+      const lightbox = GLightbox({
+        selector: ".glightbox",
+      });
+    </script>
+
+    <script src="/assets/javascript/script.js"></script>
   </body>
 </html>

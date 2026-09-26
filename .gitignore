@@ -1,0 +1,9 @@
+# Ignorar todos os arquivos PHP (como config.php e os de envio)
+*.php
+
+# Ignorando a pasta inteira de imagens ou arquivos de imagem específicos
+assets/img/
+*.png
+*.jpg
+*.jpeg
+*.svg

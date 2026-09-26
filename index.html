@@ -11,11 +11,24 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <header class="site-header">
       <div class="container">
-        <h1 class="logo">AL Passeios</h1>
+        <a
+          href="/index.html"
+          style="
+            cursor: pointer;
+            text-decoration: none;
+            color: #fefe;
+            font-weight: bold;
+          "
+          ><h1 class="logo">AL Passeios</h1></a
+        >
 
         <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
           <i class="fas fa-bars"></i>
@@ -46,63 +59,108 @@
       <h2>Passeios em Destaque</h2>
       <div class="passeio-lista">
         <div class="passeio-item">
-          <img src="/assets/img/pexels-fabianwiktor-994605.jpg" alt="Praia" />
-          <h3>Passeio na Praia</h3>
-          <p>R$ 120,00</p>
-          <a href="https://wa.me/SEUNUMERO" class="btn"
+          <img src="/assets/img/adrenalina_no_mar_lancha.png" alt="Praia" />
+          <h3>Passeio de lancha</h3>
+          <div class="passeio-detalhes">
+            <h4>Litoral Norte – R$130</h4>
+            <ul>
+              <li>Piscinas Naturais</li>
+              <li>Banco de Areia na Praia da Bruna</li>
+              <li>Tempo: 2h30</li>
+              <li>Preço a combinar</li>
+            </ul>
+          </div>
+
+          <a href="https://wa.me/+5581989701351" target="_blank" class="btn"
             >Reservar pelo WhatsApp</a
           >
         </div>
+
         <div class="passeio-item">
-          <img
-            src="/assets/img/pexels-travel-with-mac-2001775511-29216983.jpg"
-            alt="Barco"
-          />
-          <h3>Passeio de Barco</h3>
-          <p>R$ 180,00</p>
-          <a href="https://wa.me/SEUNUMERO" class="btn"
+          <img src="/assets/img/BuggyBeijando.png" alt="Buggy" />
+          <h3>Passeio de Buggy</h3>
+
+          <div class="passeio-detalhes">
+            <h4>Litoral Norte – R$300</h4>
+            <ul>
+              <li>Praias: Burgalhau, Barra Grande, Antunes, Xaréu</li>
+              <li>Tempo: 2h30</li>
+              <li>Capacidade: até 4 pessoas (inclui criança de colo)</li>
+            </ul>
+          </div>
+
+          <a href="https://wa.me/+5581989701351" target="_blank" class="btn"
             >Reservar pelo WhatsApp</a
           >
         </div>
-        <div class="passeio-item">
-          <img src="/assets/img/pexels-fabianwiktor-994605.jpg" alt="Trilha" />
-          <h3>Trilha na Natureza</h3>
-          <p>R$ 90,00</p>
-          <a href="https://wa.me/SEUNUMERO" class="btn"
-            >Reservar pelo WhatsApp</a
+      </div>
+
+      <div class="maragogi-detalhes">
+        <h3>Maragogi – As Piscinas Naturais do Caribe Brasileiro</h3>
+        <p>
+          Maragogi, com suas águas cristalinas e piscinas naturais
+          deslumbrantes, é um destino imperdível para quem busca beleza e
+          tranquilidade. Um verdadeiro encanto do Caribe Brasileiro.
+        </p>
+        <p>
+          Mergulhe em águas mornas e nade com peixes coloridos — venha conhecer
+          as mais lindas praias desse paraíso. Prepare-se para uma experiência
+          inesquecível em meio à natureza exuberante de Maragogi.
+        </p>
+        <p>
+          As piscinas naturais formadas pelos arrecifes de corais revelam um
+          espetáculo de cores e vida marinha. Um passeio imperdível para quem
+          busca contato direto com a natureza exuberante e momentos de puro
+          relaxamento.
+        </p>
+        <p>
+          Que tal um mergulho inesquecível nas piscinas naturais de Maragogi?
+          Desfrute de toda a beleza dessa rica fauna e flora marinha, nade entre
+          peixes coloridos e sinta a magia que esse paraíso tem a oferecer.
+        </p>
+        <p>
+          Com águas mornas, cristalinas e uma paisagem paradisíaca de tirar o
+          fôlego, Maragogi é o destino perfeito para relaxar, se conectar com a
+          natureza e criar memórias inesquecíveis.
+        </p>
+        <p>
+          <strong
+            >Não perca essa oportunidade de conhecer um dos lugares mais bonitos
+            do Brasil!</strong
           >
-        </div>
+        </p>
       </div>
     </section>
     <!-- SLIDE DE FOTOS DOS PASSEIOS -->
     <section class="slider">
       <div class="slider-container">
         <div class="slide fade">
-          <img
-            src="/assets/img/pexels-jean-frenna-84337-1045113.jpg"
-            alt="Praia"
-          />
+          <img src="/assets/img/fotos_beijando.png" alt="Praia" />
+        </div>
+        <div class="slide fade">
+          <img src="/assets/img/passeiobuggy_mulher.png" alt="Barco" />
         </div>
         <div class="slide fade">
           <img
-            src="/assets/img/pexels-jean-frenna-84337-1045113.jpg"
-            alt="Barco"
-          />
-        </div>
-        <div class="slide fade">
-          <img
-            src="/assets/img/pexels-quang-nguyen-vinh-222549-2155728.jpg"
+            src="/assets/img/photo_2025-07-15_22-56-19 (3).jpg"
             alt="Trilha"
           />
+        </div>
+        <div class="slide fade">
+          <img src="/assets/img/adrenalina_no_mar_lancha.png" alt="Trilha" />
+        </div>
+        <div class="slide fade">
+          <img src="/assets/img/coqueiros.jpg" alt="Trilha" />
         </div>
       </div>
       <div class="dots">
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
       </div>
     </section>
-
     <section id="avaliacoes" class="avaliacoes">
       <h2>Avaliações de Clientes</h2>
 
@@ -115,39 +173,58 @@
         <textarea id="comentario" name="comentario" rows="4" required></textarea
         ><br />
 
-        <label for="nota">Nota:</label><br />
-        <select id="nota" name="nota" required>
-          <option value="">Escolha</option>
-          <option value="5 Excelente">5 - Excelente</option>
-          <option value="4 Muito bom">4 - Muito bom</option>
-          <option value="3 Bom">3 - Bom</option>
-          <option value="2 Regular">2 - Regular</option>
-          <option value="1 Ruim">1 - Ruim</option></select
-        ><br /><br />
+        <label>Nota:</label><br />
+        <div id="star-container" class="star-rating">
+          <span class="star" data-value="1" title="Ruim">&#9733;</span>
+          <span class="star" data-value="2" title="Regular">&#9733;</span>
+          <span class="star" data-value="3" title="Bom">&#9733;</span>
+          <span class="star" data-value="4" title="Muito bom">&#9733;</span>
+          <span class="star" data-value="5" title="Excelente">&#9733;</span>
+        </div>
 
+        <input type="hidden" name="nota" id="nota" required />
+        <div id="rating-text" class="rating-text"></div>
+
+        <br /><br />
         <button type="submit" class="btn">Enviar Feedback</button>
+        <p id="form-msg" style="margin-top: 10px"></p>
       </form>
-      <p id="form-msg"></p>
+
+      <div id="feedback-list" class="feedback-list scroll-container"></div>
+
+      <div style="text-align: center; margin-top: 20px">
+        <button id="load-more" class="btn">Carregar mais comentários</button>
+      </div>
     </section>
-    <div id="feedback-list" class="feedback-list">
-      <!-- Feedbacks carregados do Supabase aparecerão aqui -->
-    </div>
 
     <section id="contato" class="contato">
       <h2>Fale Conosco</h2>
       <p>Entre em contato direto pelo WhatsApp:</p>
-      <a href="https://wa.me/SEUNUMERO" class="btn">Abrir WhatsApp</a>
+      <a href="https://wa.me/+5581989701351" class="btn" target="_blank"
+        >Abrir WhatsApp</a
+      >
+      <!-- Botão voltar ao topo -->
     </section>
 
+    <!-- Botão voltar ao topo -->
+    <button id="btn-topo" title="Voltar ao topo">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
     <footer class="site-footer">
+      <span class="aviso-responsabilidade">
+        ⚠️ Não nos responsabilizamos por objetos perdidos ou esquecidos durante
+        os passeios.
+      </span>
       <p>&copy; 2025 AL Passeios Online. Todos os direitos reservados.</p>
+
       <div class="social-links">
-        <a href="https://www.instagram.com/SEU_INSTAGRAM" target="_blank"
-          ><i class="fab fa-instagram"></i
-        ></a>
-        <a href="https://www.facebook.com/SEU_FACEBOOK" target="_blank"
-          ><i class="fab fa-facebook-f"></i
-        ></a>
+        <a
+          href="https://www.instagram.com/lupeciopasseio_maragogi_/?igsh=aDRmMG1mZnRmaDlx#"
+          target="_blank"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
       </div>
     </footer>
 
@@ -156,8 +233,31 @@
       <div class="spinner"></div>
     </div>
 
+    <!-- Whats flutuante -->
+    <a
+      href="https://wa.me/5581989701351"
+      target="_blank"
+      class="whatsapp-float"
+      aria-label="Contato WhatsApp"
+    >
+      <svg
+        width="35"
+        height="35"
+        viewBox="0 0 24 24"
+        fill="#fff"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20.52 3.48a11.914 11.914 0 0 0-16.85 0 11.916 11.916 0 0 0-3.5 8.47 11.953 11.953 0 0 0 2.05 6.5L2 22l4.57-1.21a11.888 11.888 0 0 0 6.5 2.05c4.16 0 8.08-1.6 11-4.53a11.914 11.914 0 0 0 0-16.83zm-8.5 17.15a9.06 9.06 0 0 1-4.65-1.27l-.33-.2-2.7.71.72-2.63-.22-.34a9.046 9.046 0 0 1-1.41-5.22 9.085 9.085 0 0 1 9.02-9.03 9.045 9.045 0 0 1 6.4 2.67 8.993 8.993 0 0 1 2.65 6.38 9.085 9.085 0 0 1-9.05 9.04zm5.02-6.37c-.28-.14-1.65-.81-1.9-.9-.25-.1-.43-.14-.62.14-.19.28-.74.9-.91 1.08-.17.18-.33.2-.61.07-.28-.14-1.17-.43-2.22-1.38-.82-.73-1.37-1.63-1.53-1.9-.16-.28-.02-.43.12-.57.12-.12.28-.33.42-.5.14-.17.19-.28.28-.47.09-.18.04-.34-.02-.48-.06-.14-.62-1.5-.85-2.05-.22-.54-.45-.47-.62-.48-.16 0-.35-.01-.54-.01-.19 0-.5.07-.76.34-.26.26-1 1-1 2.42 0 1.42 1.03 2.79 1.17 2.98.14.19 2.02 3.08 4.89 4.32.68.29 1.21.46 1.62.59.68.21 1.3.18 1.79.11.55-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.13-.26-.2-.54-.34z"
+        />
+      </svg>
+    </a>
+
+    <!-- ScrollReveal CDN -->
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // Toggle menu
         const toggleBtn = document.getElementById("menu-toggle");
         const menu = document.querySelector(".menu ul");
         const loadingOverlay = document.getElementById("loading-overlay");
@@ -166,10 +266,10 @@
           menu.classList.toggle("show");
         });
 
-        // Exibe o loading ao clicar em links de outras páginas
+        // Loading overlay para links externos
         document.querySelectorAll(".menu a").forEach((link) => {
+          const href = link.getAttribute("href");
           link.addEventListener("click", (e) => {
-            const href = link.getAttribute("href");
             if (href && !href.startsWith("#")) {
               e.preventDefault();
               loadingOverlay.style.display = "flex";
@@ -179,11 +279,56 @@
             }
           });
         });
+
+        // IntersectionObserver para texto Maragogi
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              observer.unobserve(entry.target);
+            }
+          });
+        });
+
+        const target = document.querySelector(".maragogi-detalhes");
+        if (target) observer.observe(target);
+
+        // ScrollReveal animações
+        ScrollReveal().reveal(".passeio-item", {
+          origin: "bottom",
+          distance: "50px",
+          duration: 800,
+          easing: "ease-in-out",
+          interval: 200,
+          reset: false,
+        });
+
+        ScrollReveal().reveal(".maragogi-detalhes", {
+          origin: "left",
+          distance: "50px",
+          duration: 1000,
+          easing: "ease-in-out",
+        });
+
+        ScrollReveal().reveal(".slider", {
+          origin: "bottom",
+          distance: "50px",
+          duration: 1000,
+          easing: "ease-in-out",
+        });
+
+        ScrollReveal().reveal(
+          ".avaliacoes h2, .avaliacoes h3, .avaliacoes form",
+          {
+            origin: "top",
+            distance: "40px",
+            duration: 800,
+            interval: 150,
+          }
+        );
       });
     </script>
 
-    <!-- SDK do Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="/assets/javascript/script.js"></script>
     <script src="/assets/javascript/slide.js"></script>
   </body>

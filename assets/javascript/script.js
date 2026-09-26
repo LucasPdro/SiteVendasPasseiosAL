@@ -1,88 +1,159 @@
-// Funções de ação para os botões
-function reservar(destino) {
-  alert(`Você escolheu reservar o passeio para: ${destino}`);
-  // Aqui você pode redirecionar ou abrir um formulário
-}
+// Efeito texto Maragogi
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target); // Para animar só uma vez
+    }
+  });
+});
+//++++++++++++++++++++++++++++++++++=CODIGO SEPARADO================================
+document.addEventListener("DOMContentLoaded", () => {
+  let offset = 0;
+  const limit = 5;
 
-function comprar(destino) {
-  alert(`Você escolheu comprar o passeio para: ${destino}`);
-  // Aqui você pode redirecionar para checkout ou integrar com API
-}
+  const stars = document.querySelectorAll(".star");
+  const notaInput = document.getElementById("nota");
+  const ratingText = document.getElementById("rating-text");
 
-// Script do Supabase para avaliações -->
-// Substitua pelas suas credenciais do Supabase
-const SUPABASE_URL = "https://gbtndkjgichrhpcxkzxv.supabase.co";
-const SUPABASE_ANON_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdidG5ka2pnaWNocmhwY3hrenh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIwMjM4MzEsImV4cCI6MjA2NzU5OTgzMX0.-I88fp30KOP11U8pvx-FDtKTYkqhZ9X2-iqJP-_BCo0";
+  const feedbackList = document.getElementById("feedback-list");
+  const loadMoreBtn = document.getElementById("load-more");
+  const form = document.getElementById("feedback-form");
+  const formMsg = document.getElementById("form-msg");
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const ratingLabels = {
+    1: "Ruim",
+    2: "Regular",
+    3: "Bom",
+    4: "Muito bom",
+    5: "Excelente",
+  };
 
-const feedbackList = document.getElementById("feedback-list");
-const feedbackForm = document.getElementById("feedback-form");
-const formMsg = document.getElementById("form-msg");
+  let envioEmAndamento = false; // controle para evitar envios simultâneos
 
-async function loadFeedbacks() {
-  let { data, error } = await supabase
-    .from("avaliacoes")
-    .select("*")
-    .order("created_at", { ascending: false });
+  // Controle de clique nas estrelas (click e touch)
+  stars.forEach((star, index) => {
+    const setRating = (event) => {
+      event.preventDefault(); // impede scroll ou comportamento inesperado
+      const rating = index + 1;
+      notaInput.value = rating;
 
-  if (error) {
-    feedbackList.innerHTML = "<p>Erro ao carregar avaliações.</p>";
-    console.error(error);
-    return;
+      stars.forEach((s, i) => {
+        s.classList.toggle("selected", i < rating);
+      });
+
+      ratingText.textContent = ratingLabels[rating] || "";
+    };
+
+    star.addEventListener("click", setRating, { passive: false });
+    star.addEventListener("touchend", setRating, { passive: false }); // melhor que touchstart
+  });
+
+  // Função para carregar comentários (paginação)
+  function carregarComentarios() {
+    fetch(`enviar_list.php?offset=${offset}&limit=${limit}`)
+      .then((response) => response.text())
+      .then((data) => {
+        if (
+          data.trim() === "" ||
+          data.toLowerCase().includes("sem comentários ainda")
+        ) {
+          loadMoreBtn.style.display = "none"; // esconde botão se não tem mais
+        } else {
+          if (offset === 0) {
+            feedbackList.innerHTML = data; // limpa lista e insere
+          } else {
+            feedbackList.innerHTML += data; // adiciona ao final
+          }
+          offset += limit;
+        }
+      })
+      .catch(() => {
+        formMsg.textContent = "Erro ao carregar comentários.";
+        formMsg.style.color = "red";
+      });
   }
 
-  if (data.length === 0) {
-    feedbackList.innerHTML = "<p>Nenhuma avaliação enviada ainda.</p>";
-    return;
+  // Evento de envio do formulário
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (envioEmAndamento) return;
+      envioEmAndamento = true;
+
+      const formData = new FormData(form);
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+
+      formMsg.textContent = "Enviando feedback...";
+      formMsg.style.color = "black";
+
+      fetch("enviar_feedback.php", {
+        method: "POST",
+        body: formData,
+        cache: "no-store",
+      })
+        .then(async (response) => {
+          envioEmAndamento = false;
+          submitBtn.disabled = false;
+
+          if (!response.ok) {
+            let errData;
+            try {
+              errData = await response.json();
+            } catch {
+              throw new Error("Erro desconhecido ao enviar feedback.");
+            }
+
+            if (errData.status === "error" && errData.msg) {
+              throw new Error(errData.msg);
+            } else {
+              throw new Error("Erro ao enviar feedback.");
+            }
+          }
+          return response.json();
+        })
+        .then((data) => {
+          formMsg.textContent = data.msg;
+          formMsg.style.color = data.status === "success" ? "green" : "red";
+
+          if (data.status === "success") {
+            form.reset();
+            notaInput.value = "";
+            ratingText.textContent = "";
+            stars.forEach((s) => s.classList.remove("selected"));
+            offset = 0;
+            loadMoreBtn.style.display = "inline-block";
+            carregarComentarios();
+          }
+        })
+        .catch((error) => {
+          envioEmAndamento = false;
+          submitBtn.disabled = false;
+          formMsg.textContent = error.message || "Erro ao enviar o feedback.";
+          formMsg.style.color = "red";
+        });
+    });
   }
 
-  feedbackList.innerHTML = data
-    .map(
-      (fb) => `
-        <div class="feedback-item">
-          <strong>${fb.nome_cliente}</strong> - Nota: ${fb.nota}<br />
-          <p>${fb.comentario}</p>
-        </div>
-      `
-    )
-    .join("");
-}
-
-feedbackForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  formMsg.style.color = "red";
-  formMsg.textContent = "";
-
-  const nome = feedbackForm.nome.value.trim();
-  const comentario = feedbackForm.comentario.value.trim();
-  const nota = feedbackForm.nota.value;
-
-  if (!nome || !comentario || !nota) {
-    formMsg.textContent = "Por favor, preencha todos os campos.";
-    return;
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener("click", carregarComentarios);
   }
 
-  const { error } = await supabase.from("avaliacoes").insert([
-    {
-      nome_cliente: nome, // <- CAMPO CORRETO
-      comentario,
-      nota,
-    },
-  ]);
-
-  if (error) {
-    formMsg.textContent = "Erro ao enviar feedback. Tente novamente.";
-    console.error(error);
-    return;
-  }
-
-  formMsg.style.color = "green";
-  formMsg.textContent = "Obrigado pelo seu feedback!";
-  feedbackForm.reset();
-  loadFeedbacks();
+  carregarComentarios();
 });
 
-// Carrega as avaliações quando a página for carregada
-loadFeedbacks();
+// BOTÃO VOLTAR AO TOPO
+const btnTopo = document.getElementById("btn-topo");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 400) {
+    btnTopo.classList.add("mostrar");
+  } else {
+    btnTopo.classList.remove("mostrar");
+  }
+});
+
+btnTopo.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
